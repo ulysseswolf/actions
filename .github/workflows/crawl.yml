@@ -20,7 +20,7 @@ jobs:
         username: ${{secrets.MAIL_USERNAME}}
         password: ${{secrets.MAIL_PWD}}
         subject: 'jd comments'
-        body: 'file//c.log'
+        body: 'file//a.log'
         to: ${{ secrets.TO }}
         from: ${{secrets.MAIL_USERNAME}}
         #content_type: text/html
