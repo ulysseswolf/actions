@@ -1,7 +1,7 @@
 name: 'test'
 on:
   schedule:
-    - cron: '10 18 * * *'
+    - cron: '13 18 * * *'
 
 jobs:
   jd_comment_crawler:
@@ -17,13 +17,15 @@ jobs:
       - name: 'Run script'
         run: python jd_comments.py
       - name: Send mail
-        username: ${{secrets.MAIL_USERNAME}}
-        password: ${{secrets.MAIL_PWD}}
-        subject: 'jd comments'
-        body: 'file//a.log'
-        to: ${{ secrets.TO }}
-        from: ${{secrets.MAIL_USERNAME}}
-        #content_type: text/html
+        uses: dawidd6/action-send-mail@v2
+        with:
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PWD}}
+          subject: 'jd comments'
+          body: 'file//a.log'
+          to: ${{ secrets.TO }}
+          from: ${{secrets.MAIL_USERNAME}}
+          #content_type: text/html
 
       
 
