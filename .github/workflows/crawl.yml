@@ -4,7 +4,7 @@ on:
     branches: 
       - master
     schedule:
-      - cron: '*/10 18 * * *'
+      - cron: '1 * * * *'
 
 jobs:
   jd_comment_crawler:
