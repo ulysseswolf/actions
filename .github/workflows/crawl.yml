@@ -22,6 +22,8 @@ jobs:
       - name: Send mail
         uses: dawidd6/action-send-mail@v2
         with:
+          server_address: smtp.qq.com
+          server_port: 465
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PWD}}
           subject: 'jd comments'
