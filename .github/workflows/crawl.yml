@@ -1,7 +1,10 @@
 name: 'test'
 on:
-  schedule:
-    - cron: '13 18 * * *'
+  push:
+    branches: 
+      - master
+    schedule:
+      - cron: '*/10 18 * * *'
 
 jobs:
   jd_comment_crawler:
