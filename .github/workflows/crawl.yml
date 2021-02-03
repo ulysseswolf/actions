@@ -1,7 +1,7 @@
 name: 'test'
 on:
   schedule:
-    - con: '15 17 * * *'
+    - con: '*/5 17 * * *'
 
 jobs:
   jd_comment_crawler:
@@ -22,7 +22,7 @@ jobs:
         subject: 'jd comments'
         body: 'file//c.log'
         to: ${{ secrets.TO }}
-         from: ${{secrets.MAIL_USERNAME}}
+        from: ${{secrets.MAIL_USERNAME}}
         #content_type: text/html
 
       
