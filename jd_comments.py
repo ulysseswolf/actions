@@ -3,11 +3,10 @@ import re
 import csv
 import random
 from datetime import datetime
-import logging
 import requests
 
 
-logging.basicConfig(filename='c.log', level=logging.INFO, filemode='a', format='%(message)s')
+log = open('a.log', 'a')
 url = 'https://club.jd.com/comment/skuProductPageComments.action?callback=fetchJSON_comment98&productId={0}&score=0&sortType=5&page=0&pageSize=10&isShadowSku=0&fold=1'
 
 filename = os.path.dirname(os.path.realpath(__file__))+'/useragents.csv'
@@ -29,21 +28,21 @@ def fetch(sku):
     g = re.match('.*"commentCount":(\d+).*', r)
     if g and g.groups():
         count = g[1]
-        logging.info(f'{sku}:{count}')
+        log.write(f'{sku}:{count}\n')
     else:
-        logging.info(f'{sku}:None')
+        log.write(f'{sku}:None\n')
         raise
 
 def main():
     skus = ['12487535', '12487831', '12487853']
-    logging.info(f'starts at: {datetime.now()}')
+    log.write(f'starts at: {datetime.now()}\n')
     for s in skus:
         try:
             fetch(s)
         except:
-            logging.info(f'error at: {datetime.now()}')
+            log.write(f'error at: {datetime.now()}\n')
             return
-    logging.info(f'ends at: {datetime.now()}')
+    log.write(f'ends at: {datetime.now()}\n')
 
 
 if __name__ == '__main__':
