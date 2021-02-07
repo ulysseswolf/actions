@@ -36,7 +36,11 @@ def fetch(sku):
         raise
 
 def main():
-    skus = ['12487535', '12487831', '12487853']
+    skus = []
+    with open('list.txt', 'r') as f:
+        for line in f:
+            skus.append(line.replace('\n',''))
+
     log.write(f'starts at: {datetime.now()}\n')
     print(f'starts at: {datetime.now()}')
     result = []
@@ -49,7 +53,6 @@ def main():
             return
     print(f'ends at: {datetime.now()}')
     log.write(f'ends at: {datetime.now()}\n')
-
 
 if __name__ == '__main__':
     main()
