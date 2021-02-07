@@ -28,21 +28,27 @@ def fetch(sku):
     g = re.match('.*"commentCount":(\d+).*', r)
     if g and g.groups():
         count = g[1]
-        log.write(f'{sku}:{count}\n')
+        #log.write(f'{sku}:{count}\n')
+        print(sku, count)
+        return (sku, count)
     else:
-        log.write(f'{sku}:None\n')
+        #log.write(f'{sku}:None\n')
         raise
 
 def main():
     skus = ['12487535', '12487831', '12487853']
-    log.write(f'starts at: {datetime.now()}\n')
+    #log.write(f'starts at: {datetime.now()}\n')
+    print(f'starts at: {datetime.now()}')
+    result = []
     for s in skus:
         try:
-            fetch(s)
+            result.append(fetch(s))
         except:
-            log.write(f'error at: {datetime.now()}\n')
+            print(error, s)
+            #log.write(f'error at: {datetime.now()}\n')
             return
-    log.write(f'ends at: {datetime.now()}\n')
+    print(f'ends at: {datetime.now()}')
+    #log.write(f'ends at: {datetime.now()}\n')
 
 
 if __name__ == '__main__':

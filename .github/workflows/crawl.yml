@@ -18,9 +18,9 @@ jobs:
       - name: 'Install dependencies'
         run: python -m pip install --upgrade requests 
       - name: 'Run script'
-        run: python jd_comments.py
+        run: python jd_comments.py > a.log
       - name: Send mail
-        uses: dawidd6/action-send-mail@v2
+        uses: dawidd6/action-send-mail@master
         with:
           server_address: smtp.qq.com
           server_port: 465
@@ -28,9 +28,10 @@ jobs:
           password: ${{secrets.MAIL_PWD}}
           subject: 'jd comments'
           body: file//a.log
+          attachments: a.log
           to: ${{ secrets.TO }}
-          from: ${{secrets.MAIL_USERNAME}}
-          #content_type: text/html
+          from: GitHub Actions
+          content_type: text/html
 
       
 
