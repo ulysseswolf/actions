@@ -27,7 +27,7 @@ jobs:
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PWD}}
           subject: 'jd comments'
-          #body: file//a.log
+          body: file//a.log
           attachments: a.log
           to: ${{ secrets.TO }}
           from: GitHub Actions
